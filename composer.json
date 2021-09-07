@@ -5,7 +5,15 @@
     "license": "MIT",
     "bin": [
         "bin/gendiff"
-    ],    
+    ], 
+    "autoload": {
+        "files": [
+            "src/Differ.php"
+        ],
+        "psr-4": {
+            "Differ\\Tests\\": "tests"
+        }
+    },   
     "authors": [
         {
             "name": "Yuriy",
@@ -14,5 +22,8 @@
     ],
     "require": {
         "docopt/docopt": "^1.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.6"
     }
 }
