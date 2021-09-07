@@ -62,18 +62,18 @@ function stylize(array $diffTree): string
 
             switch ($type) {
                 case 'unmodified':
-                    $value = $node['oldValue'];
+                    $value = toString($node['oldValue']);
                     return "{$bigIndent}{$key}: {$value}";
                 case 'modified':
-                    $oldValue = $node['oldValue'];
-                    $newValue = $node['newValue'];
+                    $oldValue = toString($node['oldValue']);
+                    $newValue = toString($node['newValue']);
                     return "{$smallIndent}- {$key}: {$oldValue}\n"
                         . "{$smallIndent}+ {$key}: {$newValue}";
                 case 'added':
-                    $value = $node['newValue'];
+                    $value = toString($node['newValue']);
                     return "{$smallIndent}+ {$key}: {$value}";
                 case 'removed':
-                    $value = $node['oldValue'];
+                    $value = toString($node['oldValue']);
                     return "{$smallIndent}- {$key}: {$value}";
                 default:
                     throw new \Exception('Wrong node type');
@@ -82,4 +82,15 @@ function stylize(array $diffTree): string
         $diffTree
     );
     return implode("\n", $result);
+}
+
+function toString(mixed $value): string
+{
+    if (is_bool($value)) {
+    	return ($value) ? 'true' : 'false';
+    }
+    if (is_null($value)) {
+    	return 'null';
+    }
+    return $value;
 }
