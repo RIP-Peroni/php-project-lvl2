@@ -2,6 +2,8 @@
 
 namespace Differ\Differ;
 
+use function Differ\Parsers\parse;
+
 function parseJson(string $content): object
 {
     return json_decode($content);
@@ -9,8 +11,8 @@ function parseJson(string $content): object
 
 function generateDiff(string $pathToFile1, string $pathToFile2): string
 {
-    $structure1 = parseJson(file_get_contents($pathToFile1));
-    $structure2 = parseJson(file_get_contents($pathToFile2));
+    $structure1 = parse(getFileContent($pathToFile1), getFileType($pathToFile1));
+    $structure2 = parse(getFileContent($pathToFile2), getFileType($pathToFile2));
     $diffTree = getDiffTree($structure1, $structure2);
     return format($diffTree);
 }
@@ -48,7 +50,7 @@ function getDiffTree(object $structure1, object $structure2): array
 function format(array $diffTree): string
 {
     $result = stylize($diffTree);
-    return "{\n" . "{$result}" . "\n}";
+    return "{\n" . "{$result}" . "\n}\n";
 }
 
 function stylize(array $diffTree): string
@@ -93,4 +95,14 @@ function toString(mixed $value): string
         return 'null';
     }
     return $value;
+}
+
+function getFileContent(string $path): string
+{
+	return file_get_contents($path);
+}
+
+function getFileType(string $path): string
+{
+	return pathinfo($path, PATHINFO_EXTENSION);
 }

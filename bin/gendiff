@@ -33,6 +33,5 @@ Options:
 DOCOPT;
 
 $args = Docopt::handle($doc, array('version'=>'gendiff 0.1.0'));
-var_dump($args);
 $diff = generateDiff($args->args['<firstFile>'], $args->args['<secondFile>']);
 print_r($diff);

@@ -4,6 +4,7 @@
 ![workflow](https://github.com/RIP-Peroni/php-project-lvl2/actions/workflows/workflow.yml/badge.svg)
 
 ## Работа с плоскими json файлами:
-Для установки зависимостей используйте `make install`
 [![asciicast_plain_json](https://asciinema.org/a/tLxON3ug7DwK9RiOTeeXjy78B.png)](https://asciinema.org/a/tLxON3ug7DwK9RiOTeeXjy78B)
 
+## Работа с плоскими yaml файлами:
+[![asciicast_plain_json](https://asciinema.org/a/lTkIvyXVdEELJWhCnOujAjrQn.png)](https://asciinema.org/a/lTkIvyXVdEELJWhCnOujAjrQn)
