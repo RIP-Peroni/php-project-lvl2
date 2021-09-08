@@ -87,10 +87,10 @@ function stylize(array $diffTree): string
 function toString(mixed $value): string
 {
     if (is_bool($value)) {
-    	return ($value) ? 'true' : 'false';
+        return ($value) ? 'true' : 'false';
     }
     if (is_null($value)) {
-    	return 'null';
+        return 'null';
     }
     return $value;
 }
