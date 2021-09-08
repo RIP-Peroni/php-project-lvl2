@@ -99,10 +99,10 @@ function toString(mixed $value): string
 
 function getFileContent(string $path): string
 {
-	return file_get_contents($path);
+    return file_get_contents($path);
 }
 
 function getFileType(string $path): string
 {
-	return pathinfo($path, PATHINFO_EXTENSION);
+    return pathinfo($path, PATHINFO_EXTENSION);
 }
