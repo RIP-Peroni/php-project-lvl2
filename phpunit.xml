@@ -8,4 +8,9 @@
   convertWarningsToExceptions="true"
   processIsolation="false"
   stopOnFailure="true">
+  <coverage includeUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">./src</directory>
+        </include>
+    </coverage>
 </phpunit>

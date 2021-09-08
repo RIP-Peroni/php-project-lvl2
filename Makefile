@@ -9,3 +9,6 @@ lint:
 
 test:
 	./vendor/bin/phpunit --colors=always ./tests
+
+test-coverage:
+	./vendor/bin/phpunit --coverage-clover=build/logs/clover.xml tests
