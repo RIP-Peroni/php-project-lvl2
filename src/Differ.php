@@ -48,7 +48,7 @@ function getDiffTree(object $structure1, object $structure2): array
 function format(array $diffTree): string
 {
     $result = stylize($diffTree);
-    return "\n" . "{$result}" . "\n";
+    return "{\n" . "{$result}" . "\n}";
 }
 
 function stylize(array $diffTree): string
