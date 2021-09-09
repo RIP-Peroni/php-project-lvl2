@@ -4,7 +4,10 @@
 ![workflow](https://github.com/RIP-Peroni/php-project-lvl2/actions/workflows/workflow.yml/badge.svg)
 
 ## Работа с плоскими json файлами:
-[![asciicast_plain_json](https://asciinema.org/a/tLxON3ug7DwK9RiOTeeXjy78B.png)](https://asciinema.org/a/tLxON3ug7DwK9RiOTeeXjy78B)
+[![asciicast_plane_json](https://asciinema.org/a/tLxON3ug7DwK9RiOTeeXjy78B.png)](https://asciinema.org/a/tLxON3ug7DwK9RiOTeeXjy78B)
 
 ## Работа с плоскими yaml файлами:
-[![asciicast_plain_json](https://asciinema.org/a/lTkIvyXVdEELJWhCnOujAjrQn.png)](https://asciinema.org/a/lTkIvyXVdEELJWhCnOujAjrQn)
+[![asciicast_plane_yaml](https://asciinema.org/a/lTkIvyXVdEELJWhCnOujAjrQn.png)](https://asciinema.org/a/lTkIvyXVdEELJWhCnOujAjrQn)
+
+## Работа с вложенными json и yaml файлами:
+[![asciicast_nested_json_and_yaml](https://asciinema.org/a/5HmSF8DHx4EANxDbO5RmTaAam.png)](https://asciinema.org/a/5HmSF8DHx4EANxDbO5RmTaAam)

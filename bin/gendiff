@@ -33,5 +33,5 @@ Options:
 DOCOPT;
 
 $args = Docopt::handle($doc, array('version'=>'gendiff 0.1.0'));
-$diff = generateDiff($args->args['<firstFile>'], $args->args['<secondFile>']);
+$diff = generateDiff($args->args['<firstFile>'], $args->args['<secondFile>'], $args->args['--format']);
 print_r($diff);
