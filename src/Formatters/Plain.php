@@ -5,7 +5,7 @@ namespace Differ\Formatters\Plain;
 function render(array $diffTree): string
 {
     $result = makePlain($diffTree);
-    return $result . "\n";
+    return $result;
 }
 
 function makePlain(array $diffTree, mixed $path = ''): string
