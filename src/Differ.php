@@ -10,7 +10,7 @@ function parseJson(string $content): object
     return json_decode($content);
 }
 
-function generateDiff(string $pathToFile1, string $pathToFile2, string $format = 'stylish'): string
+function genDiff(string $pathToFile1, string $pathToFile2, string $format = 'stylish'): string
 {
     $structure1 = parse(getFileContent($pathToFile1), getFileType($pathToFile1));
     $structure2 = parse(getFileContent($pathToFile2), getFileType($pathToFile2));

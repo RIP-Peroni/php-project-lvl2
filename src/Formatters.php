@@ -7,6 +7,8 @@ function format(array $diffTree, string $format): string
     switch ($format) {
         case 'stylish':
             return Stylish\render($diffTree);
+        case 'plain':
+            return Plain\render($diffTree);
         default:
             throw new \Exception("Wrong format {$format}!");
     }
