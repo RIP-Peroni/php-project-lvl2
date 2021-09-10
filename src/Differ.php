@@ -33,13 +33,13 @@ function makeDiffTree(object $structure1, object $structure2): array
                     'children' => makeDiffTree($structure1->$key, $structure2->$key)
                 ];
             } elseif (!property_exists($structure2, $key)) {
-                $type = 'removed';
+                return ['key' => $key, 'type' => 'removed', 'oldValue' => $oldValue];
             } elseif (!property_exists($structure1, $key)) {
-                $type = 'added';
+                return ['key' => $key, 'type' => 'added', 'newValue' => $newValue];
             } elseif ($oldValue !== $newValue) {
-                $type = 'modified';
+                return ['key' => $key, 'type' => 'modified', 'oldValue' => $oldValue, 'newValue' => $newValue];
             } else {
-                $type = 'unmodified';
+                return ['key' => $key, 'type' => 'unmodified', 'oldValue' => $oldValue];
             }
 
             return [

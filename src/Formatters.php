@@ -9,6 +9,8 @@ function format(array $diffTree, string $format): string
             return Stylish\render($diffTree);
         case 'plain':
             return Plain\render($diffTree);
+        case 'json':
+            return Json\render($diffTree);
         default:
             throw new \Exception("Wrong format {$format}!");
     }
