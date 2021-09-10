@@ -5,7 +5,7 @@ namespace Differ\Formatters\Stylish;
 function render(array $diffTree): string
 {
     $tempResult = makeStylish($diffTree);
-    return "{\n" . "{$tempResult}" . "\n}\n";
+    return "{\n" . "{$tempResult}" . "\n}";
 }
 
 function makeStylish(array $diffTree, int $depth = 1): string
