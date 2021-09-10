@@ -14,7 +14,7 @@ class DifferTest extends TestCase
         $actual = genDiff('./tests/fixtures/file1.json', './tests/fixtures/file2.json');
         $this->assertEquals($expected, $actual);
     }
-    
+
     public function testGenereateDiffYaml(): void
     {
         $expected = file_get_contents('./tests/fixtures/nestedStylishDiff');
