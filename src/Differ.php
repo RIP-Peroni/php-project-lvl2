@@ -50,9 +50,15 @@ function makeDiffTree(object $structure1, object $structure2): array
 function getFileContent(string $path): string
 {
     if (is_readable($path)) {
-        return file_get_contents($path);
+        $fileData = file_get_contents($path);
     } else {
         throw new \Exception("{$path} doesn't exist or doesn't readable");
+    }
+
+    if (is_string($fileData)) {
+    	return $fileData;
+    } else {
+    	throw new \Exception("{$path} is not in string format");
     }
 }
 
