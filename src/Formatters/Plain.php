@@ -48,6 +48,9 @@ function stringify(mixed $value): string
     if (is_null($value)) {
         return 'null';
     }
+    if (is_int($value)) {
+        return $value;
+    }
     if (!is_object($value)) {
         return (string) "'$value'";
     }
