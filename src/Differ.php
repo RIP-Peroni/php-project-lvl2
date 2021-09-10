@@ -49,7 +49,11 @@ function makeDiffTree(object $structure1, object $structure2): array
 
 function getFileContent(string $path): string
 {
-    return file_get_contents($path);
+    if (is_readable($path)) {
+        return file_get_contents($path);
+    } else {
+        throw new \Exception("{$path} doesn't exist or doesn't readable");
+    }
 }
 
 function getFileType(string $path): string
