@@ -4,6 +4,7 @@ namespace Differ\Differ;
 
 use function Differ\Parsers\parse;
 use function Differ\Formatters\format;
+use function Functional\sort;
 
 function parseJson(string $content): object
 {
@@ -21,7 +22,7 @@ function genDiff(string $pathToFile1, string $pathToFile2, string $format = 'sty
 function makeDiffTree(object $structure1, object $structure2): array
 {
     $keys = array_keys(array_merge((array) $structure1, (array) $structure2));
-    sort($keys);
+    $sortedKeys = sort($keys, fn($a, $b) => $a <=> $b);
     return array_map(
         function ($key) use ($structure1, $structure2) {
             $oldValue = $structure1->$key ?? null;
@@ -41,15 +42,8 @@ function makeDiffTree(object $structure1, object $structure2): array
             } else {
                 return ['key' => $key, 'type' => 'unmodified', 'oldValue' => $oldValue];
             }
-
-            return [
-                'key' => $key,
-                'type' => $type,
-                'oldValue' => $oldValue,
-                'newValue' => $newValue
-            ];
         },
-        $keys
+        $sortedKeys
     );
 }
 

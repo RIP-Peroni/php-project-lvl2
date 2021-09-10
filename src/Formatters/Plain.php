@@ -2,16 +2,18 @@
 
 namespace Differ\Formatters\Plain;
 
+use function Functional\flatten;
+
 function render(array $diffTree): string
 {
     $result = makePlain($diffTree);
-    return $result;
+    return implode("\n", flatten($result));
 }
 
-function makePlain(array $diffTree, mixed $path = ''): string
+function makePlain(array $diffTree, string $path = ''): array
 {
     $result = array_map(
-        function ($node) use ($path) {
+        function ($node) use ($path): mixed {
             $type = $node['type'];
             $key = $node['key'];
             switch ($type) {
@@ -29,18 +31,17 @@ function makePlain(array $diffTree, mixed $path = ''): string
                     $value = stringify($node['oldValue']);
                     return "Property '{$path}{$key}' was removed";
                 case 'unmodified':
-                    break;
+                    return [];
                 default:
                     throw new \Exception('Wrong node type');
             }
         },
         $diffTree
     );
-    $filteredResult = array_filter($result, fn($node) => !empty($node));
-    return implode("\n", $filteredResult);
+    return $result;
 }
 
-function stringify(mixed $value): string
+function stringify(mixed $value): string|int
 {
     if (is_bool($value)) {
         return ($value) ? 'true' : 'false';
@@ -52,7 +53,7 @@ function stringify(mixed $value): string
         return $value;
     }
     if (!is_object($value)) {
-        return (string) "'$value'";
+        return "'$value'";
     }
     return "[complex value]";
 }
