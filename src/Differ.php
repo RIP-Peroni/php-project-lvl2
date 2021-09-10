@@ -56,9 +56,9 @@ function getFileContent(string $path): string
     }
 
     if (is_string($fileData)) {
-    	return $fileData;
+        return $fileData;
     } else {
-    	throw new \Exception("{$path} is not in string format");
+        throw new \Exception("{$path} is not in string format");
     }
 }
 
