@@ -12,24 +12,23 @@ function render(array $diffTree): string
 
 function makePlain(array $diffTree, string $path = ''): array
 {
-    $result = array_map(
+    return array_map(
         function ($node) use ($path): mixed {
             $type = $node['type'];
-            $key = $node['key'];
             switch ($type) {
                 case 'nested':
-                    $nestedPath = "{$path}{$key}.";
+                    $nestedPath = "{$path}{$node['key']}.";
                     return makePlain($node['children'], $nestedPath);
                 case 'modified':
                     $oldValue = stringify($node['oldValue']);
                     $newValue = stringify($node['newValue']);
-                    return "Property '{$path}{$key}' was updated. From {$oldValue} to {$newValue}";
+                    return "Property '{$path}{$node['key']}' was updated. From {$oldValue} to {$newValue}";
                 case 'added':
                     $value = stringify($node['newValue']);
-                    return "Property '{$path}{$key}' was added with value: {$value}";
+                    return "Property '{$path}{$node['key']}' was added with value: {$value}";
                 case 'removed':
                     $value = stringify($node['oldValue']);
-                    return "Property '{$path}{$key}' was removed";
+                    return "Property '{$path}{$node['key']}' was removed";
                 case 'unmodified':
                     return [];
                 default:
@@ -38,7 +37,6 @@ function makePlain(array $diffTree, string $path = ''): array
         },
         $diffTree
     );
-    return $result;
 }
 
 function stringify(mixed $value): string|int
